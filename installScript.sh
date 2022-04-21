@@ -1,3 +1,17 @@
+echo "----- What is your bash file name ? ----"
+echo "Type: 1 - bashrc\n2- zshrz\n3- other (specify)"
+read bashFile
+if [ $bashFile = 1 ]
+then
+    bashFile="bashrc"
+elif [ $bashFile = 2 ]
+then
+    bashFile="zshrc"
+else
+    echo "Type your bash name"
+    read bashFile
+fi
+
 # installing docker
 sudo apt-get install ca-certificates curl gnupg lsb-release
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable test" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
@@ -41,10 +55,11 @@ sudo curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/i
 # installing pre-commit
 pip install pre-commit
 
-
-## Need to add this to your (bash/zsh)rc file:
-read bashFile
+echo "Now adding all PATH export to your bash File!"
 ## exporting PATHs
-echo "export PATH=$PATH:/usr/local/go/bin" >> "~/.${bashFile}rc"
-echo "export PATH=$PATH:/usr/local/go/bin"  >> "~/.${bashFile}rc"
-echo 'eval "$(pyenv init -)"' >> "~./${bashFile}rc"
+echo "export PATH=$PATH:/usr/local/go/bin" >> "~/.${bashFile}"
+echo "export PATH=$PATH:/usr/local/go/bin"  >> "~/.${bashFile}"
+echo 'eval "$(pyenv init -)"' >> "~./${bashFile}"
+
+echo "Please, verify your bash file, and be sure that your new variables are set"
+sleep 3
